@@ -1,13 +1,13 @@
 function count(input) {
-    let ans = {};
+    let charCount = {};
     for (let char of input) {
-        if (ans.hasOwnProperty(char)) {
-            ans[char] += 1;
+        if (charCount.hasOwnProperty(char)) {
+            charCount[char] += 1;
         } else {
-            ans[char] = 1;
+            charCount[char] = 1;
         }
     }
-    return ans;
+    return charCount;
 }
 
 let input1 = ['a', 'b', 'c', 'a', 'c', 'a', 'x']; 
@@ -15,16 +15,16 @@ console.log(count(input1));
 // should print {a:3, b:1, c:2, x:1}
 
 function groupByKey(input) {
-    let ans = {};
-    for (let pair of input) {
-        let k = pair["key"], v = pair["value"];
-        if (ans.hasOwnProperty(k)) {
-            ans[k] += v
+    let keyCount = {};
+    for (let keyValuePair of input) {
+        let k = keyValuePair["key"], v = keyValuePair["value"];
+        if (keyCount.hasOwnProperty(k)) {
+            keyCount[k] += v
         } else {
-            ans[k] = v
+            keyCount[k] = v
         }
     }
-    return ans;
+    return keyCount;
 }
 let input2 = [
     {key: 'a', value: 3},

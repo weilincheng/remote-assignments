@@ -7,8 +7,8 @@ function modifyText() {
     }
 }
 
-const el = document.getElementsByClassName("top-container")[0];
-el.addEventListener("click", modifyText);
+const topContainerClass = document.getElementsByClassName("top-container")[0];
+topContainerClass.addEventListener("click", modifyText);
 
 function showHiddenContainer() {
     const hiddenContainer = document.getElementsByClassName("hidden-container")[0];
@@ -19,5 +19,5 @@ function showHiddenContainer() {
     }
 }
 
-const el2 = document.getElementsByClassName("btn")[0];
-el2.addEventListener("click", showHiddenContainer);
+const buttonClass = document.getElementsByClassName("btn")[0];
+buttonClass.addEventListener("click", showHiddenContainer);

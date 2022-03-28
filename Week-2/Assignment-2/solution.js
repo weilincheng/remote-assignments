@@ -1,11 +1,12 @@
 function avg(data) {
-    let n = data["size"];
-    let ans = 0;
+    let productLength = data["size"];
+    let avgPrice = 0;
     for (let product of data["products"]) {
         let price = product["price"];
-        ans += price;
+        avgPrice += price;
     }
-    return ans / n;
+    avgPrice /= productLength;
+    return avgPrice;
 }
 console.log(
     avg({

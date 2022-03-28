@@ -1,9 +1,9 @@
 function max(numbers) {
-    let ans = Number.NEGATIVE_INFINITY;
+    let maxNum = Number.NEGATIVE_INFINITY;
     for (let num of numbers) {
-        ans = Math.max(num, ans);
+        maxNum = Math.max(num, maxNum);
     }
-    return ans
+    return maxNum
 }
 function findPosition(numbers, target) {
     for (let i = 0; i <= numbers.length; i++) {
