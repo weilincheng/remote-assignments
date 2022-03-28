@@ -1,18 +1,18 @@
 function binarySearchPosition(numbers, target) {
-    let l = 0, r = numbers.length;
-    while (l < r) {
-        let m = l + Math.floor((r - l) / 2);
-        if (numbers[m] === target) {
-            return m;
+    let leftIdx = 0, rightIdx = numbers.length;
+    while (leftIdx < rightIdx) {
+        let midIdx = leftIdx + Math.floor((rightIdx - leftIdx) / 2);
+        if (numbers[midIdx] === target) {
+            return midIdx;
         }
-        if (numbers[m] > target) {
-            r = m;
+        if (numbers[midIdx] > target) {
+            rightIdx = midIdx;
         } else {
-            l = m + 1;
+            leftIdx = midIdx + 1;
         }
     }
-    return l;
+    return leftIdx;
 }
 console.log( binarySearchPosition([1, 2, 5, 6, 7], 1) ); // should print 0 
 console.log( binarySearchPosition([1, 2, 5, 6, 7], 6) ); // should print 3
-console.log( binarySearchPosition([1, 2, 5, 6, 7], 3) ); // should print 
+console.log( binarySearchPosition([1, 2, 5, 6, 7], 4) ); // should print 2
