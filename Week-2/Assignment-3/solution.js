@@ -17,8 +17,7 @@ console.log(count(input1));
 function groupByKey(input) {
     let ans = {};
     for (let pair of input) {
-        let k = pair["key"];
-        let v = pair["value"];
+        let k = pair["key"], v = pair["value"];
         if (ans.hasOwnProperty(k)) {
             ans[k] += v
         } else {
