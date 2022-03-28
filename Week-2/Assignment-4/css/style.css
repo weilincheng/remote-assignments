@@ -33,7 +33,7 @@ text-decoration: none;
 }
 
 .content-box {
-    background-color: blue;
+    background-color: lightskyblue;
     width: 580px;
     height: 200px;
     margin: 10px;
@@ -77,5 +77,10 @@ text-decoration: none;
 }
 
 .bottom-container {
+    text-align: center;
+}
+
+.hidden-container {
+    display: none;
     text-align: center;
 }
