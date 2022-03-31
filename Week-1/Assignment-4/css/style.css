@@ -1,6 +1,11 @@
 body {
     margin: 0;
 }
+
+.thumbnail {
+    max-width: 64px;
+}
+
 .nav-bar {
     margin-top: 0;
     padding-left: 10px;
@@ -61,6 +66,7 @@ body {
 }
 
 .btn {
+    padding: 5px;
     margin-top: 20px;
     width: 20%;
     background-color: blue;
@@ -79,3 +85,22 @@ body {
     min-width: 40%;
 }
 
+.second-container {
+    text-align: center;
+}
+
+.second-container-products {
+    margin-bottom: 30px;
+    display: flex;
+/*    justify-content: space-around; */
+    flex-wrap: wrap;
+    flex-basis: 50%;
+}
+
+.second-container-img-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 100px;
+}
