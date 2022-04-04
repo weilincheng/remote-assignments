@@ -9,6 +9,18 @@ app.get('/', (req, res) => {
     app.use(express.static('public/index.hmlt'));
 });
 
+app.get('/data', (req, res) => {
+    const inputNumber = req.query.number;
+    if (!inputNumber) {
+        res.send('Lack of Parameter')
+    } else if (!Number.isInteger(+inputNumber)) {
+        res.send('Wrong Parameter')
+    } else {
+        const result = (( 1 + +inputNumber) * +inputNumber) / 2;
+        res.send(`The result is: ${result}`);
+    }
+});
+
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+    console.log(`Example app listening on http://localhost:${port}`);
 });
