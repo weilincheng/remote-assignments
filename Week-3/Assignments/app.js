@@ -6,7 +6,8 @@ app.use(express.static('public'));
 
 
 app.get('/', (req, res) => {
-    app.use(express.static('public/index.hmlt'));
+    app.use(express.static('public'));
+    app.use(express.static('public/index.html'));
 });
 
 app.get('/data', (req, res) => {
