@@ -23,7 +23,7 @@
                     const result = httpReq.responseText;
                     const resultNumber = document.getElementById('result_number');
                     if (resultNumber) {
-                        console.log("Found the result!")
+                        console.log("Found the result. Replace the old one.")
                         console.log(resultNumber);
                         resultNumber.innerText = `${result}`;
                     } else {
