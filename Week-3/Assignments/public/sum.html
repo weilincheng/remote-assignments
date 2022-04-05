@@ -7,6 +7,39 @@
     <title>Sum</title>
 </head>
 <body>
+    <label for="input_number">Input a number</label>
+    <input type="text" id="input_number">
+    <button id="input_button">Get Result</button>
+<script>
+    const resultButton = document.getElementById('input_button');
+    resultButton.addEventListener("click", () => {
+        const inputNumber = document.getElementById('input_number').value;
+        
+        // Make an HTTP request  
+        let httpReq = new XMLHttpRequest();
+        httpReq.onreadystatechange = () => {
+            if (httpReq.readyState === XMLHttpRequest.DONE) {
+                if (httpReq.status === 200) {
+                    const result = httpReq.responseText;
+                    const resultNumber = document.getElementById('result_number');
+                    if (resultNumber) {
+                        console.log("Found the result!")
+                        console.log(resultNumber);
+                        resultNumber.innerText = `${result}`;
+                    } else {
+                        console.log("No result. Add a new one!")
+                        let html = `<p id="result_number">${result}</p>`;
+                        resultButton.insertAdjacentHTML("afterend", html);
+                    }
+                } else {
+                    ('There was a problem with the request.');
+                }
+            }
+        };
+        httpReq.open("GET", `http://localhost:3000/data?number=${inputNumber}`);
+        httpReq.send(); 
+    });
     
+</script>
 </body>
 </html>
