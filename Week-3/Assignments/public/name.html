@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum</title>
+</head>
+<body>
+    <label for="input_name">Input your name</label>
+    <input type="text" id="input_name">
+    <button id="input_button">Submit</button>
+<script>
+    const resultButton = document.getElementById('input_button');
+    resultButton.addEventListener("click", () => {
+        const inputName = document.getElementById('input_name').value;
+        console.log(inputName);
+        
+        // Make an HTTP request  
+        let httpReq = new XMLHttpRequest();
+        httpReq.onreadystatechange = () => {
+            if (httpReq.readyState === XMLHttpRequest.DONE) {
+                if (httpReq.status === 200) {
+                    const result = httpReq.responseText;
+                    console.log(result);
+                    window.location.href = '/myName';
+                } else {
+                    ('There was a problem with the request.');
+                }
+            }
+        };
+        httpReq.open("GET", `http://localhost:3000/trackName?name=${inputName}`);
+        httpReq.send(); 
+    });
+    
+</script>
+</body>
+</html>
