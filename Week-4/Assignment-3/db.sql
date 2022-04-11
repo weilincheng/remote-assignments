@@ -24,6 +24,8 @@ INSERT INTO user(email, password) VALUES ('w@gmail.com', '123');
 INSERT INTO user(email, password) VALUES ('e@gmail.com', '321');
 INSERT INTO user(email, password) VALUES ('d@gmail.com', '222');
 
+# DELETE FROM user WHERE email='aaa';
+
 
 
 
