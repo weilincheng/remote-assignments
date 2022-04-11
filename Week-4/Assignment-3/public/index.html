@@ -12,23 +12,57 @@
             <div class="container">
                 <label>Email: </label>
                 <input
-                    type="text"
+                    type="email"
+                    id="email"
                     placeholder="Enter Email"
-                    name="username"
+                    name="email"
                     required
                 />
                 <br />
                 <label>Password : </label>
                 <input
                     type="password"
+                    id="password"
                     placeholder="Enter Password"
                     name="password"
                     required
                 />
                 <br />
-                <button type="submit">Sign Up</button>
-                <button type="submit">Sign In</button>
+                <button type="button" id="sign-up-btn">Sign Up</button>
+                <button type="button" id="sign-in-btn">Sign In</button>
             </div>
         </form>
+        <script>
+            const signUpButton = document.getElementById("sign-up-btn");
+            const signInButton = document.getElementById("sing-in-btn");
+            // When user click Sign Up Button
+            signUpButton.addEventListener("click", () => {
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+                console.log(`${email}:${password}`);
+                console.log("User clicked Sign Up button");
+
+                /*                 // Make an HTTP request
+                let httpReq = new XMLHttpRequest();
+                httpReq.onreadystatechange = () => {
+                    if (httpReq.readyState === XMLHttpRequest.DONE) {
+                        if (httpReq.status === 200) {
+                            const result = httpReq.responseText;
+                            console.log(result);
+                            window.location.href = "/myName";
+                        } else {
+                            ("There was a problem with the request.");
+                        }
+                    }
+                };
+                httpReq.open(
+                    "GET",
+                    `http://localhost:3000/trackName?name=${inputName}`
+                );
+                httpReq.send(); */
+            });
+
+            // When user click Sign Up Button
+        </script>
     </body>
 </html>

@@ -7,6 +7,7 @@ const db = mysql.createConnection({
     host: "localhost",
     user: "weilin",
     password: "12345",
+    database: "assignment",
 });
 
 db.connect((err) => {
@@ -18,8 +19,20 @@ db.connect((err) => {
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
+// Serve index.html as Login form
+app.get("/", (req, res) => {});
+
+// Insert new user data into MySQL
+app.get("/createuser", (req, res) => {
+    const sql =
+        "INSERT INTO user(email, password) VALUES ('ttt@gmail.com', '00000');";
+    db.query(sql, (err, result) => {
+        if (err) {
+            throw err;
+        }
+        console.log(result);
+        res.send("User created...");
+    });
 });
 
 app.listen(port, () => {
