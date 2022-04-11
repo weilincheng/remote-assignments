@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Log In</h1>
-        <form>
+        <form id="login-form">
             <div class="container">
                 <label>Email: </label>
                 <input
@@ -28,41 +28,113 @@
                     required
                 />
                 <br />
-                <button type="button" id="sign-up-btn">Sign Up</button>
-                <button type="button" id="sign-in-btn">Sign In</button>
+                <button type="button" id="sign-up-btn" onClick="checkSignUp()">
+                    Sign Up
+                </button>
+                <button type="button" id="sign-in-btn" onClick="checkSignIn()">
+                    Sign In
+                </button>
             </div>
         </form>
+        <h2 id="email-exist" style="display: none">Email exists!</h2>
+        <h2 id="password-no-match" style="display: none">
+            Email and password does not match!
+        </h2>
         <script>
-            const signUpButton = document.getElementById("sign-up-btn");
-            const signInButton = document.getElementById("sing-in-btn");
-            // When user click Sign Up Button
-            signUpButton.addEventListener("click", () => {
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                console.log(`${email}:${password}`);
-                console.log("User clicked Sign Up button");
+            function checkSignUp() {
+                if (!document.getElementById("email").checkValidity()) {
+                    alert("Email is not valid!");
+                } else if (
+                    !document.getElementById("password").checkValidity()
+                ) {
+                    alert("Please enter password!");
+                } else {
+                    const email = document.getElementById("email").value;
+                    const password = document.getElementById("password").value;
 
-                /*                 // Make an HTTP request
-                let httpReq = new XMLHttpRequest();
-                httpReq.onreadystatechange = () => {
-                    if (httpReq.readyState === XMLHttpRequest.DONE) {
-                        if (httpReq.status === 200) {
-                            const result = httpReq.responseText;
-                            console.log(result);
-                            window.location.href = "/myName";
-                        } else {
-                            ("There was a problem with the request.");
+                    // Make an HTTP request
+                    let httpReq = new XMLHttpRequest();
+                    let validEmail = false;
+                    httpReq.onreadystatechange = () => {
+                        if (httpReq.readyState === XMLHttpRequest.DONE) {
+                            if (httpReq.status === 200) {
+                                validEmail = httpReq.responseText;
+                            } else {
+                                ("There was a problem with the request.");
+                            }
                         }
+                    };
+                    httpReq.open(
+                        "GET",
+                        `http://localhost:3000/checkEmail?email=${email}`,
+                        false
+                    );
+                    httpReq.send();
+                    if (validEmail === "true") {
+                        document.getElementById("email-exist").style.display =
+                            "block";
+                        document.getElementById(
+                            "password-no-match"
+                        ).style.display = "none";
+                    } else {
+                        // Create the user
+                        httpReq.onreadystatechange = () => {
+                            if (httpReq.readyState === XMLHttpRequest.DONE) {
+                                if (httpReq.status === 200) {
+                                    window.location.href = "/member";
+                                } else {
+                                    ("There was a problem with the request.");
+                                }
+                            }
+                        };
+                        httpReq.open(
+                            "GET",
+                            `http://localhost:3000/createUser?email=${email}&password=${password}`
+                        );
+                        httpReq.send();
                     }
-                };
-                httpReq.open(
-                    "GET",
-                    `http://localhost:3000/trackName?name=${inputName}`
-                );
-                httpReq.send(); */
-            });
+                }
+            }
 
-            // When user click Sign Up Button
+            // When user click Sign In Button
+            function checkSignIn() {
+                if (!document.getElementById("email").checkValidity()) {
+                    alert("Email is not valid!");
+                } else if (!document.getElementById("email").checkValidity()) {
+                    alert("Please enter password!");
+                } else {
+                    const email = document.getElementById("email").value;
+                    const password = document.getElementById("password").value;
+
+                    // Make an HTTP request
+                    let httpReq = new XMLHttpRequest();
+                    let validPassword = false;
+                    httpReq.onreadystatechange = () => {
+                        if (httpReq.readyState === XMLHttpRequest.DONE) {
+                            if (httpReq.status === 200) {
+                                validPassword = httpReq.responseText;
+                            } else {
+                                ("There was a problem with the request.");
+                            }
+                        }
+                    };
+                    httpReq.open(
+                        "GET",
+                        `http://localhost:3000/checkPassword?email=${email}&password=${password}`,
+                        false
+                    );
+                    httpReq.send();
+                    if (validPassword === "true") {
+                        window.location.href = "/member";
+                    } else {
+                        document.getElementById("email-exist").style.display =
+                            "none";
+                        document.getElementById(
+                            "password-no-match"
+                        ).style.display = "block";
+                    }
+                }
+            }
         </script>
     </body>
 </html>
