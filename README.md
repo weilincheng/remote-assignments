@@ -3,6 +3,9 @@
 ## Week 4
 
 -   [Assignment 1](https://weilincheng.github.io/remote-assignments/Week-4/Assignment-1/solution.js)
+-   [Assignment 2](https://weilincheng.github.io/remote-assignments/Week-4/Assignment-2/solution.js)
+-   [Assignment 3](https://weilincheng.github.io/remote-assignments/Week-4/Assignment-3/index.js)
+-   [Assignment 4](https://weilincheng.github.io/remote-assignments/Week-4/Assignment-4/solution.js)
 
 ## Week 3
 
