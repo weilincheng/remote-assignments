@@ -15,7 +15,8 @@ CREATE TABLE user(
     id INT AUTO_INCREMENT,
     email VARCHAR(75),
     password VARCHAR(255),
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    UNIQUE (email)
 );
 
 SHOW TABLES;
@@ -25,7 +26,4 @@ INSERT INTO user(email, password) VALUES ('e@gmail.com', '321');
 INSERT INTO user(email, password) VALUES ('d@gmail.com', '222');
 
 # DELETE FROM user WHERE email='aaa';
-
-
-
-
+# mysqldump -p --databases assignment >! dump.sql

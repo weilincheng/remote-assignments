@@ -27,28 +27,25 @@ app.get("/member", (req, res) => {
     res.redirect("/member.html");
 });
 
-// Check email
-app.get("/checkEmail", (req, res) => {
+// Sign Up route
+app.get("/signUp", (req, res) => {
     const email = req.query.email;
-    const sql = `SELECT * FROM user WHERE email='${email}';`;
-    console.log(`Checking email: ${email}`);
-    db.query(sql, (err, result) => {
+    const password = req.query.password;
+    const createUserSql = `INSERT INTO user(email, password) VALUES ('${email}', '${password}');`;
+    db.query(createUserSql, (err, result) => {
         if (err) {
-            throw err;
-        }
-        console.log(result);
-        if (result.length > 0) {
+            // throw err;
             console.log("Email exist. Response is true");
-            res.send(true);
+            res.send("emailExist");
         } else {
-            console.log("Email does not exist. Response is false");
-            res.send(false);
+            console.log("Email does not exist. User created...");
+            res.send("true");
         }
     });
 });
 
-// Check email
-app.get("/checkPassword", (req, res) => {
+// Sign In route
+app.get("/signIn", (req, res) => {
     const email = req.query.email;
     const password = req.query.password;
     const sql = `SELECT * FROM user WHERE email='${email}' AND password='${password}';`;
@@ -60,25 +57,11 @@ app.get("/checkPassword", (req, res) => {
         console.log(result);
         if (result.length > 0) {
             console.log("Password matches email. Response is true");
-            res.send(true);
+            res.send("true");
         } else {
             console.log("Password does not match email. Response is false");
-            res.send(false);
+            res.send("false");
         }
-    });
-});
-
-// Insert new user data into MySQL
-app.get("/createUser", (req, res) => {
-    const email = req.query.email;
-    const password = req.query.password;
-    const sql = `INSERT INTO user(email, password) VALUES ('${email}', '${password}');`;
-    db.query(sql, (err, result) => {
-        if (err) {
-            throw err;
-        }
-        console.log(result);
-        res.send("User created...");
     });
 });
 
